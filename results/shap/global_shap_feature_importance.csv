@@ -1,0 +1,17 @@
+feature,display_name,mean_absolute_shap_value_for_phishing
+path_length,Path length,0.2116278733875906
+https_flag,HTTPS used,0.09354297961400188
+token_count,URL token count,0.06457094062504426
+percentage_numeric_chars,Numeric-character percentage,0.04163647436469878
+number_of_digits,Number of digits,0.03885265809040453
+dot_count,Number of dots,0.01978086193210337
+has_ip_address,IP address in URL,0.016670096736066068
+subdomain_count,Subdomain count,0.010312439409470709
+tld_popularity,Popular TLD,0.007548799301343176
+tld_length,TLD length,0.0054841387430926035
+suspicious_file_extension,Suspicious file extension,0.005098037220239612
+url_length,URL length,0.005019414535490297
+domain_name_length,Domain name length,0.002564842249268281
+url_entropy,URL entropy,0.0022472845709666923
+has_hyphen_in_domain,Hyphen in domain,0.0004298275190359795
+query_param_count,Query parameter count,0.0001645060464558326

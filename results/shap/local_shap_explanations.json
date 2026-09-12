@@ -1,0 +1,103 @@
+{
+  "phishing_example": {
+    "url": "http://57.129.51.86/ppc",
+    "actual_label": "Phishing",
+    "predicted_label": "Phishing",
+    "phishing_probability": 1.0,
+    "top_contributing_features": [
+      {
+        "feature": "path_length",
+        "display_name": "Path length",
+        "value": 4.0,
+        "shap_contribution_to_phishing": 0.22595040296152463,
+        "effect": "increased phishing prediction"
+      },
+      {
+        "feature": "https_flag",
+        "display_name": "HTTPS used",
+        "value": 0.0,
+        "shap_contribution_to_phishing": 0.1061988173481115,
+        "effect": "increased phishing prediction"
+      },
+      {
+        "feature": "token_count",
+        "display_name": "URL token count",
+        "value": 7.0,
+        "shap_contribution_to_phishing": 0.046715532533580274,
+        "effect": "increased phishing prediction"
+      },
+      {
+        "feature": "number_of_digits",
+        "display_name": "Number of digits",
+        "value": 9.0,
+        "shap_contribution_to_phishing": 0.04278070747154283,
+        "effect": "increased phishing prediction"
+      },
+      {
+        "feature": "percentage_numeric_chars",
+        "display_name": "Numeric-character percentage",
+        "value": 39.13043478,
+        "shap_contribution_to_phishing": 0.04145893948968754,
+        "effect": "increased phishing prediction"
+      },
+      {
+        "feature": "has_ip_address",
+        "display_name": "IP address in URL",
+        "value": 1.0,
+        "shap_contribution_to_phishing": 0.025312501599174878,
+        "effect": "increased phishing prediction"
+      }
+    ]
+  },
+  "legitimate_example": {
+    "url": "https://www.atlasdocorpohumano.com",
+    "actual_label": "Legitimate",
+    "predicted_label": "Legitimate",
+    "phishing_probability": 0.0,
+    "top_contributing_features": [
+      {
+        "feature": "path_length",
+        "display_name": "Path length",
+        "value": 0.0,
+        "shap_contribution_to_phishing": -0.19197099591840358,
+        "effect": "decreased phishing prediction"
+      },
+      {
+        "feature": "https_flag",
+        "display_name": "HTTPS used",
+        "value": 1.0,
+        "shap_contribution_to_phishing": -0.08674084391740085,
+        "effect": "decreased phishing prediction"
+      },
+      {
+        "feature": "token_count",
+        "display_name": "URL token count",
+        "value": 5.0,
+        "shap_contribution_to_phishing": -0.07625233941546522,
+        "effect": "decreased phishing prediction"
+      },
+      {
+        "feature": "percentage_numeric_chars",
+        "display_name": "Numeric-character percentage",
+        "value": 0.0,
+        "shap_contribution_to_phishing": -0.038384990450634454,
+        "effect": "decreased phishing prediction"
+      },
+      {
+        "feature": "number_of_digits",
+        "display_name": "Number of digits",
+        "value": 0.0,
+        "shap_contribution_to_phishing": -0.03445149681597152,
+        "effect": "decreased phishing prediction"
+      },
+      {
+        "feature": "dot_count",
+        "display_name": "Number of dots",
+        "value": 2.0,
+        "shap_contribution_to_phishing": -0.02519907729963054,
+        "effect": "decreased phishing prediction"
+      }
+    ]
+  },
+  "note": "Positive SHAP values push the model toward phishing; negative values push it toward legitimate. SHAP explains this model's behaviour, not causal truth."
+}

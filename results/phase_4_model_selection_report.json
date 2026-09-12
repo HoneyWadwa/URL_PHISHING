@@ -1,0 +1,43 @@
+{
+  "selection_method": "2-fold stratified cross-validation on training data; phishing F1 was optimized",
+  "best_cross_validation_phishing_f1": 0.9994194499722809,
+  "best_parameters": {
+    "model__max_depth": null,
+    "model__max_features": "sqrt",
+    "model__min_samples_leaf": 1,
+    "model__n_estimators": 200
+  },
+  "final_model_features": [
+    "url_length",
+    "has_ip_address",
+    "dot_count",
+    "https_flag",
+    "url_entropy",
+    "token_count",
+    "subdomain_count",
+    "query_param_count",
+    "tld_length",
+    "path_length",
+    "has_hyphen_in_domain",
+    "number_of_digits",
+    "tld_popularity",
+    "suspicious_file_extension",
+    "domain_name_length",
+    "percentage_numeric_chars"
+  ],
+  "held_out_test_metrics": {
+    "accuracy": 0.9995539033457249,
+    "phishing_precision": 0.9993703762002204,
+    "phishing_recall": 0.999921253642019,
+    "phishing_f1": 0.9996457390277504,
+    "roc_auc": 0.9999978196233144
+  },
+  "robustness_check_without_has_ip_address": {
+    "accuracy": 0.9995043370508054,
+    "phishing_precision": 0.9993703266430539,
+    "phishing_recall": 0.9998425072840381,
+    "phishing_f1": 0.9996063612029602,
+    "roc_auc": 0.9999987886796191
+  },
+  "interpretation": "The robustness result estimates the dependency on has_ip_address. It is not a replacement for external-dataset evaluation."
+}

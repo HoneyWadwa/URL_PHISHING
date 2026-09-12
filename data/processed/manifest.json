@@ -1,0 +1,54 @@
+{
+  "source_file": "data/url_features_extracted1.csv",
+  "random_state": 42,
+  "test_size": 0.2,
+  "target": "ClassLabel",
+  "url_column_excluded_from_model": "URL",
+  "rows_in_raw_data": 101219,
+  "rows_removed_missing_target": 1,
+  "exact_duplicate_rows_removed": 346,
+  "rows_after_cleaning": 100872,
+  "train_rows": 80697,
+  "test_rows": 20175,
+  "class_counts_after_cleaning": {
+    "0": 63492,
+    "1": 37380
+  },
+  "feature_sets": {
+    "all_features": [
+      "url_length",
+      "has_ip_address",
+      "dot_count",
+      "https_flag",
+      "url_entropy",
+      "token_count",
+      "subdomain_count",
+      "query_param_count",
+      "tld_length",
+      "path_length",
+      "has_hyphen_in_domain",
+      "number_of_digits",
+      "tld_popularity",
+      "suspicious_file_extension",
+      "domain_name_length",
+      "percentage_numeric_chars"
+    ],
+    "without_ip_address_for_robustness": [
+      "url_length",
+      "dot_count",
+      "https_flag",
+      "url_entropy",
+      "token_count",
+      "subdomain_count",
+      "query_param_count",
+      "tld_length",
+      "path_length",
+      "has_hyphen_in_domain",
+      "number_of_digits",
+      "tld_popularity",
+      "suspicious_file_extension",
+      "domain_name_length",
+      "percentage_numeric_chars"
+    ]
+  }
+}

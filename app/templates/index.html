@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PhishLens — Explainable URL Detection</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">EXPLAINABLE AI • URL RISK ANALYSIS</p>
+      <h1>Is this URL safe?</h1>
+      <p class="lead">Paste a URL to get a machine-learning prediction, a risk estimate, and a clear explanation of the result.</p>
+      <p class="offline-note">This app only analyzes the URL text. It never visits the link.</p>
+      <form method="post" class="url-form">
+        <label for="url">Website URL</label>
+        <div class="input-row">
+          <input id="url" name="url" type="text" placeholder="https://example.com/login" value="{{ submitted_url }}" maxlength="2048" required>
+          <button type="submit">Check URL</button>
+        </div>
+      </form>
+      {% if error %}<p class="error">{{ error }}</p>{% endif %}
+    </section>
+
+    {% if result %}
+    <section class="result-card">
+      <div class="result-heading">
+        <div>
+          <p class="eyebrow">MODEL RESULT</p>
+          <h2 class="{{ 'phishing' if result.prediction == 'Phishing' else 'legitimate' }}">{{ result.prediction }}</h2>
+        </div>
+        <span class="risk {{ result.risk_style }}">{{ result.risk }} risk</span>
+      </div>
+      <div class="metrics">
+        <div><span>Phishing probability</span><strong>{{ '%.2f'|format(result.phishing_probability) }}%</strong></div>
+        <div><span>Prediction confidence</span><strong>{{ '%.2f'|format(result.confidence) }}%</strong></div>
+      </div>
+      <p class="method-note">Risk is based on the model’s phishing probability: Low below 25%, Medium from 25–69.99%, and High at 70% or above.</p>
+    </section>
+
+    <section class="two-column">
+      <article class="panel">
+        <p class="eyebrow">WHY THIS RESULT?</p>
+        <h2>Top model signals</h2>
+        <p class="subtle">Positive SHAP values raise phishing risk; negative values reduce it.</p>
+        <div class="signals">
+          {% for item in result.explanation %}
+          <div class="signal {{ 'raises' if item.contribution > 0 else 'reduces' }}">
+            <div><strong>{{ item.name }}</strong><span>Value: {{ '%.4g'|format(item.value) }}</span></div>
+            <span>{{ item.effect }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </article>
+      <article class="panel">
+        <p class="eyebrow">FEATURES USED</p>
+        <h2>URL indicators</h2>
+        <div class="feature-list">
+          {% for item in result.features %}
+          <div><span>{{ item.name }}</span><strong>{{ '%.4g'|format(item.value) }}</strong></div>
+          {% endfor %}
+        </div>
+      </article>
+    </section>
+    {% endif %}
+  </main>
+</body>
+</html>
